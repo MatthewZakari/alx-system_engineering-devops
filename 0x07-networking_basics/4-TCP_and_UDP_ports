@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Displays listening ports using ss command, including PID and name of the program to which each socket belongs.
-
-ss -l -p -n
