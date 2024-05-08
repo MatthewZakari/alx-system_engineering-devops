@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# A bash script that transfers a file from client to server
+
+if [ $# -lt 4 ]
+then
+	echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+	exit 1
+fi
+
+# parameters assignment
+
+path_to_file = $1
+ip = $2
+username = $3
+path_to_ssh_key = $4
+
+# strict host key disabling
+
+scp -o "StrictHostKeyChecking = no" -i "$path_to_ssh_key" "$path_to_file" "$username@$ip:~/"
+
+# check if the transfer was successful or not
+
+if [ $? -eq 0 ]
+then
+	echo "TRANSFER SUCCESSFUL"
+else
+	echo "TRANSFER FAILED"
+fi
