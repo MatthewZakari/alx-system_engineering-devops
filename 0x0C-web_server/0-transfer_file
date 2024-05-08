@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# script that transfers a file from client to a serve
 
 # Check for correct number of arguments
 if [ "$#" -ne 4 ]; then

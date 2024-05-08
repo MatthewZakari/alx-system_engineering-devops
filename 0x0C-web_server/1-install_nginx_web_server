@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 # This script installs and configures Nginx on a web server
 
-# Update package lists
 sudo apt-get update
-
-# Install Nginx
 sudo apt-get install -y nginx
 
 # Allow Nginx HTTP traffic
@@ -16,10 +13,7 @@ echo "Hello World!" | sudo tee /var/www/html/index.html
 # Test Nginx configuration
 sudo nginx -t
 
-# Reload or restart Nginx service based on test result
-if [ $? -eq 0 ]; then
-    sudo service nginx reload
-else
-    sudo service nginx restart
-fi
+# Reload Nginx service based on test result
+
+sudo service nginx reload
 
