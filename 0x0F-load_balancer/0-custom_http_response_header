@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Set the hostname
+HOSTNAME="471510-web-02"
+
+# Insert add_header directive
+sudo sed -i "/server_name _;/a \ \ \ \ add_header x-served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+
+# Test Nginx configuration
+if sudo nginx -t; then
+    # Ensure Nginx is configured to listen on port 80
+    sudo sed -i 's/.*listen\s*80.*/listen 80;/g' /etc/nginx/sites-available/default
+
+    # Reload Nginx service based on test result
+    sudo service nginx restart
+else
+    echo "Nginx configuration test failed. Please check configuration."
+fi
+
