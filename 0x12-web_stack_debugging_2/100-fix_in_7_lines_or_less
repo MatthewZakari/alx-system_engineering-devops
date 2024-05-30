@@ -3,4 +3,5 @@
 id -u nginx &>/dev/null || sudo useradd --no-create-home --shell /bin/false nginx
 sudo sed -i 's/^user .*/user nginx;/g' /etc/nginx/nginx.conf
 sudo sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
-sudo service nginx restart
+chmod 644 /etc/nginx/nginx.conf
+sudo -u nginx service nginx restart
