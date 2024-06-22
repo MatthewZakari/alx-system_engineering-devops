@@ -1,23 +1,27 @@
 #!/usr/bin/python3
 """
-This module defines a function to query the Reddit API for the number of subscribers
-in a given subreddit.
+Contains the number_of_subscribers function
 """
+
 import requests
 
-def number_of_subscribers(subreddit):
-    """
-    Returns the number of subscribers for a given subreddit.
-    If the subreddit is invalid, returns 0.
-    """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'Custom User Agent 1.0'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
 
-    if response.status_code != 200:
+def number_of_subscribers(subreddit):
+    """Returns the number of subscribers for a given subreddit"""
+    if subreddit is None or type(subreddit) is not str:
         return 0
-    
+    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
     try:
-        return response.json().get('data', {}).get('subscribers', 0)
-    except Exception:
+        response = requests.get(url, headers=headers, allow_redirects=False)
+        response.raise_for_status()
+        json_data = response.json()
+        subscribers = json_data.get('data', {}).get('subscribers', 0)
+        return subscribers
+    except requests.RequestException as e:
+        print(f"HTTP Request failed: {e}")
         return 0
+    except ValueError as e:
+        print(f"Error parsing JSON: {e}")
+        return 0
+
