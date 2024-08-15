@@ -22,3 +22,8 @@ sudo netstat -tuln | grep :80
 
 echo "Nginx has been configured to listen on port 80 and is running."
 
+# script that restores the default server port
+
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx start
+

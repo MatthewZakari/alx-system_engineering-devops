@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Script that installs ufw firewall and allow port 22(SSH), $$(HTTPS SSL) and 80(HTTP)
+
+# Install UFW
+sudo apt update
+sudo apt install ufw -y
+
+# Allow necessary ports
+sudo ufw allow 22/tcp
+sudo ufw allow 443/tcp
+sudo ufw allow 80/tcp
+
+# Enable UFW
+sudo ufw enable
+
+# Check UFW status
+sudo ufw status
