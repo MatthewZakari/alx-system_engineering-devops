@@ -1,0 +1,10 @@
+./0-nginx_likes_port_80: line 5: sudo: command not found
+./0-nginx_likes_port_80: line 6: sudo: command not found
+./0-nginx_likes_port_80: line 9: sudo: command not found
+./0-nginx_likes_port_80: line 10: sudo: command not found
+./0-nginx_likes_port_80: line 13: sudo: command not found
+./0-nginx_likes_port_80: line 14: sudo: command not found
+./0-nginx_likes_port_80: line 17: sudo: command not found
+./0-nginx_likes_port_80: line 20: sudo: command not found
+./0-nginx_likes_port_80: line 21: sudo: command not found
+Nginx has been configured to listen on port 80 and is running.
